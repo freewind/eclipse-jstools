@@ -1,4 +1,4 @@
-package com.pkg.jstools;
+package org.pkg.jstools;
 
 import java.io.InputStream;
 import java.util.HashMap;

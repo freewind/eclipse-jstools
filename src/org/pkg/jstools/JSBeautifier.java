@@ -1,4 +1,4 @@
-package com.pkg.jstools;
+package org.pkg.jstools;
 
 import org.eclipse.core.resources.IFile;
 

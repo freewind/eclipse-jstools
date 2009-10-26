@@ -1,4 +1,4 @@
-package com.pkg.jstools.preferences;
+package org.pkg.jstools.preferences;
 
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.widgets.Composite;

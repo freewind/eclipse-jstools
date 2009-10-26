@@ -1,4 +1,4 @@
-package com.pkg.jstools.preferences;
+package org.pkg.jstools.preferences;
 
 /**
  * Constant definitions for plug-in preferences

@@ -1,4 +1,4 @@
-package com.pkg.jstools.handlers;
+package org.pkg.jstools.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -10,8 +10,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.pkg.jstools.JSLint;
 
-import com.pkg.jstools.JSLint;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.

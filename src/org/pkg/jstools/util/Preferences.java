@@ -1,4 +1,4 @@
-package com.pkg.jstools.util;
+package org.pkg.jstools.util;
 
 public class Preferences {
 

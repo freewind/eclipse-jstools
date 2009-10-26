@@ -1,9 +1,9 @@
-package com.pkg.jstools.preferences;
+package org.pkg.jstools.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.pkg.jstools.JSToolsActivator;
 
-import com.pkg.jstools.JSToolsActivator;
 
 /**
  * Class used to initialize default preference values.

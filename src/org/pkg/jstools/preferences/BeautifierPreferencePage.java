@@ -1,10 +1,10 @@
-package com.pkg.jstools.preferences;
+package org.pkg.jstools.preferences;
 
 import org.eclipse.jface.preference.*;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.IWorkbench;
-import com.pkg.jstools.JSToolsActivator;
+import org.pkg.jstools.JSToolsActivator;
 
 /**
  * This class represents a preference page that is contributed to the

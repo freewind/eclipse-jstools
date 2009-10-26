@@ -1,4 +1,4 @@
-package com.pkg.jstools.preferences;
+package org.pkg.jstools.preferences;
 
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;

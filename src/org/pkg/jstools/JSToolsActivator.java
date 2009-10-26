@@ -1,4 +1,4 @@
-package com.pkg.jstools;
+package org.pkg.jstools;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

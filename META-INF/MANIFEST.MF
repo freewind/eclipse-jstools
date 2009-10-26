@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: JSTools
 Bundle-SymbolicName: com.pkg.jstools; singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: com.pkg.jstools.JSToolsActivator
+Bundle-Activator: org.pkg.jstools.JSToolsActivator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.mozilla.rhino,
