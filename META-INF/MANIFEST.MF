@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JSTools
+Bundle-SymbolicName: com.pkg.jstools; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.pkg.jstools.JSToolsActivator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.mozilla.rhino,
+ org.eclipse.ui.editors,
+ org.eclipse.core.resources,
+ org.eclipse.core.filesystem,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.ui.ide
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
