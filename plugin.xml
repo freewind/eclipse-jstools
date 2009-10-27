@@ -4,10 +4,12 @@
     <extension point="org.eclipse.ui.commands">
         <category name="JSTools" id="org.pkg.jstools.commands.category"/>
         <command name="JSLint" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsLint"/>
+        <command name="JSLintClear" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsLintClear"/>
         <command name="JSBeautify" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsBeautify"/>
     </extension>
     <extension point="org.eclipse.ui.handlers">
         <handler commandId="org.pkg.jstools.commands.jsLint" class="org.pkg.jstools.handlers.JSLintHandler"/>
+        <handler commandId="org.pkg.jstools.commands.jsLintClear" class="org.pkg.jstools.handlers.JSLintHandler"/>
         <handler commandId="org.pkg.jstools.commands.jsBeautify" class="org.pkg.jstools.handlers.JSBeautifierHandler"/>
     </extension>
     <extension point="org.eclipse.ui.bindings">
@@ -19,12 +21,14 @@
             <menu label="JSTools" mnemonic="T" id="org.pkg.jstools.menus.sampleMenu">
                 <command commandId="org.pkg.jstools.commands.jsLint" icon="icons/lint.png" id="org.pkg.jstools.menus.lint" label="Run JSLint" mnemonic="L" tooltip="Run JSLint"/>
                 <command commandId="org.pkg.jstools.commands.jsBeautify" icon="icons/beautify.png" id="org.pkg.jstools.menus.beautify" label="Beautify JS" mnemonic="B" tooltip="Beautify JS"/>
+                <command commandId="org.pkg.jstools.commands.jsLintClear" icon="icons/lint.png" id="org.pkg.jstools.menus.lintClear" label="Clear JSLint errors" mnemonic="K" tooltip="Clear JSLint errors"/>
             </menu>
         </menuContribution>
         <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
             <toolbar id="org.pkg.jstools.toolbars.jsToolbar">
                 <command commandId="org.pkg.jstools.commands.jsLint" icon="icons/lint.png" id="org.pkg.jstools.toolbars.lint" label="Run JSLint" tooltip="Run JSLint"/>
                 <command commandId="org.pkg.jstools.commands.jsBeautify" icon="icons/beautify.png" id="org.pkg.jstools.toolbars.beautify" label="Beautify JS" tooltip="Beautify JS"/>
+                <command commandId="org.pkg.jstools.commands.jsLintClear" icon="icons/lint.png" id="org.pkg.jstools.menus.lintClear" label="Clear JSLint errors" mnemonic="K" tooltip="Clear JSLint errors"/>
             </toolbar>
         </menuContribution>
     </extension>

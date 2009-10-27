@@ -68,7 +68,6 @@ public class JSLint {
 				marker.setAttribute(IMarker.MESSAGE, reason);
 				marker.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
 				marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
-				// marker.setAttribute(IMarker.USER_EDITABLE, true);
 				// Needed to delete own markers!
 				marker.setAttribute("org.pkg.jstools.marker", true);
 			}
