@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: JSTools
-Bundle-SymbolicName: com.pkg.jstools; singleton:=true
+Bundle-SymbolicName: org.pkg.jstools; singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.pkg.jstools.JSToolsActivator
 Require-Bundle: org.eclipse.ui,

@@ -48,11 +48,11 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.JSLINT_NEWCAP, false);
 		store.setDefault(PreferenceConstants.JSLINT_IMMED, false);
 
-		store.setDefault(PreferenceConstants.JSLINT_INDENT, "4");
-		store.setDefault(PreferenceConstants.JSLINT_LINELEN, "");
-		store.setDefault(PreferenceConstants.JSLINT_ERRS, "50");
+		store.setDefault(PreferenceConstants.JSLINT_INDENT, 4);
+		store.setDefault(PreferenceConstants.JSLINT_LINELEN, 80);
+		store.setDefault(PreferenceConstants.JSLINT_ERRS, 50);
 
-		store.setDefault(PreferenceConstants.JSB_INDENT, "4");
+		store.setDefault(PreferenceConstants.JSB_INDENT, 4);
 		store.setDefault(PreferenceConstants.JSB_PRESERVE_EMPTY, true);
 		store.setDefault(PreferenceConstants.JSB_DETECT_PACKERS, true);
 	}

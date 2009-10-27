@@ -3,7 +3,7 @@ package org.pkg.jstools.util;
 import org.mozilla.javascript.Context;
 
 /**
- * @author praveenkumar.g
+ * @author praveen.kailas@gmail.com
  *
  */
 public final class Util {

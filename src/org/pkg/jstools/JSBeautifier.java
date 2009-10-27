@@ -3,7 +3,7 @@ package org.pkg.jstools;
 import org.eclipse.core.resources.IFile;
 
 /**
- * @author praveenkumar.g
+ * @author praveen.kailas@gmail.com
  *
  */
 public class JSBeautifier {
