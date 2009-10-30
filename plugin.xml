@@ -1,62 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
-    <extension point="org.eclipse.ui.commands">
-        <category name="JSTools" id="org.pkg.jstools.commands.category"/>
-        <command name="JSLint" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsLint"/>
-        <command name="JSLintClear" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsLintClear"/>
-        <command name="JSBeautify" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsBeautify"/>
-    </extension>
-    <extension point="org.eclipse.ui.handlers">
-        <handler commandId="org.pkg.jstools.commands.jsLint" class="org.pkg.jstools.handlers.JSLintHandler"/>
-        <handler commandId="org.pkg.jstools.commands.jsLintClear" class="org.pkg.jstools.handlers.JSLintHandler"/>
-        <handler commandId="org.pkg.jstools.commands.jsBeautify" class="org.pkg.jstools.handlers.JSBeautifierHandler"/>
-    </extension>
-    <extension point="org.eclipse.ui.bindings">
-        <key commandId="org.pkg.jstools.commands.jsLint" contextId="org.eclipse.ui.contexts.window" sequence="M1+6" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
-        <key commandId="org.pkg.jstools.commands.jsBeautify" contextId="org.eclipse.ui.contexts.window" sequence="M1+7" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
-    </extension>
-    <extension point="org.eclipse.ui.menus">
-        <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-            <menu label="JSTools" mnemonic="T" id="org.pkg.jstools.menus.sampleMenu">
-                <command commandId="org.pkg.jstools.commands.jsLint" icon="icons/lint.png" id="org.pkg.jstools.menus.lint" label="Run JSLint" mnemonic="L" tooltip="Run JSLint"/>
-                <command commandId="org.pkg.jstools.commands.jsBeautify" icon="icons/beautify.png" id="org.pkg.jstools.menus.beautify" label="Beautify JS" mnemonic="B" tooltip="Beautify JS"/>
-                <command commandId="org.pkg.jstools.commands.jsLintClear" icon="icons/lint.png" id="org.pkg.jstools.menus.lintClear" label="Clear JSLint errors" mnemonic="K" tooltip="Clear JSLint errors"/>
-            </menu>
-        </menuContribution>
-        <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
-            <toolbar id="org.pkg.jstools.toolbars.jsToolbar">
-                <command commandId="org.pkg.jstools.commands.jsLint" icon="icons/lint.png" id="org.pkg.jstools.toolbars.lint" label="Run JSLint" tooltip="Run JSLint"/>
-                <command commandId="org.pkg.jstools.commands.jsBeautify" icon="icons/beautify.png" id="org.pkg.jstools.toolbars.beautify" label="Beautify JS" tooltip="Beautify JS"/>
-                <command commandId="org.pkg.jstools.commands.jsLintClear" icon="icons/lint.png" id="org.pkg.jstools.menus.lintClear" label="Clear JSLint errors" mnemonic="K" tooltip="Clear JSLint errors"/>
-            </toolbar>
-        </menuContribution>
-    </extension>
- <extension point="org.eclipse.ui.preferencePages">
-    <!-- 
-    <page
-          class="org.pkg.jstools.preferences.Preferences"
-          id="org.pkg.jstools.preferences.Preferences"
-          name="JS Tools">
-    </page> -->
- 
-    <page
-          class="org.pkg.jstools.preferences.LintPreferencePage"
-          id="org.pkg.jstools.preferences.LintPreferences"
-          category="org.pkg.jstools.preferences.Preferences"
-          name="JS Lint">
-    </page>
-    <page
-          class="org.pkg.jstools.preferences.BeautifierPreferencePage"
-          id="org.pkg.jstools.preferences.BeautifierPreferencePage"
-          category="org.pkg.jstools.preferences.Preferences"
-          name="JS Beautifier">
-    </page>
- </extension>
- <extension
-       point="org.eclipse.core.runtime.preferences">
-    <initializer
-          class="org.pkg.jstools.preferences.PreferenceInitializer">
-    </initializer>
- </extension>
-</plugin> 
+  <extension point="org.eclipse.ui.commands">
+    <category name="JSTools" id="org.pkg.jstools.commands.category"/>
+    <command name="JSLint" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsLint"/>
+    <command name="JSLintClear" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsLintClear"/>
+    <command name="JSBeautify" categoryId="org.pkg.jstools.commands.category" id="org.pkg.jstools.commands.jsBeautify"/>
+  </extension>
+  <extension point="org.eclipse.ui.handlers">
+    <handler commandId="org.pkg.jstools.commands.jsLint" class="org.pkg.jstools.handlers.JSLintHandler"/>
+    <handler commandId="org.pkg.jstools.commands.jsLintClear" class="org.pkg.jstools.handlers.JSLintClearHandler"/>
+    <handler commandId="org.pkg.jstools.commands.jsBeautify" class="org.pkg.jstools.handlers.JSBeautifierHandler"/>
+  </extension>
+  <extension point="org.eclipse.ui.bindings">
+    <key commandId="org.pkg.jstools.commands.jsLint" contextId="org.eclipse.ui.contexts.window" sequence="M1+6" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+    <key commandId="org.pkg.jstools.commands.jsBeautify" contextId="org.eclipse.ui.contexts.window" sequence="M1+7" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+    <key commandId="org.pkg.jstools.commands.jsLintClear" contextId="org.eclipse.ui.contexts.window" sequence="M1+8" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+  </extension>
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+      <menu label="JSTools" mnemonic="T" id="org.pkg.jstools.menus.jsMenu">
+        <command commandId="org.pkg.jstools.commands.jsLint" icon="icons/lint.png" id="org.pkg.jstools.menus.lint" label="Run JSLint" mnemonic="L" tooltip="Run JSLint"/>
+        <command commandId="org.pkg.jstools.commands.jsBeautify" icon="icons/beautify.png" id="org.pkg.jstools.menus.beautify" label="Beautify JS" mnemonic="B" tooltip="Beautify JS"/>
+        <separator name="jstsep" />
+        <command commandId="org.pkg.jstools.commands.jsLintClear" id="org.pkg.jstools.menus.lintClear" label="Clear all JSLint errors" mnemonic="K" tooltip="Clear all JSLint errors"/>
+      </menu>
+    </menuContribution>
+    <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+      <toolbar id="org.pkg.jstools.toolbars.jsToolbar">
+        <command commandId="org.pkg.jstools.commands.jsLint" icon="icons/lint.png" id="org.pkg.jstools.toolbars.lint" label="Run JSLint" tooltip="Run JSLint"/>
+        <command commandId="org.pkg.jstools.commands.jsBeautify" icon="icons/beautify.png" id="org.pkg.jstools.toolbars.beautify" label="Beautify JS" tooltip="Beautify JS"/>
+      </toolbar>
+    </menuContribution>
+  </extension>
+  <extension point="org.eclipse.ui.preferencePages">
+    <!-- <page class="org.pkg.jstools.preferences.Preferences" id="org.pkg.jstools.preferences.Preferences" name="JS Tools"></page> -->
+    <page class="org.pkg.jstools.preferences.LintPreferencePage" id="org.pkg.jstools.preferences.LintPreferences" category="org.pkg.jstools.preferences.Preferences" name="JS Lint"/>
+    <page class="org.pkg.jstools.preferences.BeautifierPreferencePage" id="org.pkg.jstools.preferences.BeautifierPreferencePage" category="org.pkg.jstools.preferences.Preferences" name="JS Beautifier"/>
+  </extension>
+  <extension point="org.eclipse.core.runtime.preferences">
+    <initializer class="org.pkg.jstools.preferences.PreferenceInitializer"/>
+  </extension>
+</plugin>

@@ -1071,7 +1071,7 @@ var JSLINT = (function () {
             if (at >= 0) {
                 warningAt("Unsafe character.", line, at);
             }
-            if (option.maxlen && option.maxlen < s.length) {
+            if (option.maxlen && (option.maxlen < s.length)) {
                 warningAt("Line too long.", line, s.length);
             }
             return true;
@@ -1848,12 +1848,20 @@ loop:   for (;;) {
                                 v, v.value);
                     }
                     obj.maxerr = b;
+                } else if (t.value === 'maxlen' && o === '/*jslint') {
+                    b = +v.value;
+                    if (typeof b !== 'number' || !isFinite(b) || b <= 0 ||
+                            Math.floor(b) !== b) {
+                        error("Expected a small integer and instead saw '{a}'.",
+                                v, v.value);
+                    }
+                    obj.maxerr = b;
                 } else if (v.value === 'true') {
                     obj[t.value] = true;
                 } else if (v.value === 'false') {
                     obj[t.value] = false;
                 } else {
-                    error("Bad option value.", v);
+                    error("Bad option value for : " + t.value + ', value : ' + v.value, v);
                 }
                 t = lex.token();
             } else {

@@ -32,8 +32,6 @@
 
 */
 
-
-
 function js_beautify(js_source_text, options)
 {
 

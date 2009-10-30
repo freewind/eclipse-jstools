@@ -3,6 +3,7 @@ package org.pkg.jstools;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -42,6 +43,9 @@ public class JSLint {
 		if (file == null) {
 			return;
 		}
+		if (!file.getFileExtension().equalsIgnoreCase("js")) {
+			return;
+		}
 
 		initContext();
 
@@ -49,18 +53,23 @@ public class JSLint {
 		String options = "/*jslint maxerr: 50 */";
 		try {
 			contents = getFileContents(file.getContents());
-			options = getLintPreferences().toString().replaceAll("=", ":")
+			
+			options = getLintPreferences().toString().replaceAll("=", ": ")
 					.replaceFirst("\\{", "/*jslint ").replaceAll("\\}", " */");
-			contents = options + "\n" + contents;
+			
+			contents = options + "\n\n" + contents;
+
 			scope.put("contents", scope, contents);
 			context.evaluateString(scope, "results = JSLINT(contents, null);",
 					"JSLint", 1, null);
+			
 			Scriptable lint = (Scriptable) scope.get("JSLINT", scope);
 			NativeArray errors = (NativeArray) lint.get("errors", null);
 			clearMarkers(file);
 			for (int i = 0; i < errors.getLength(); i++) {
 				NativeObject error = (NativeObject) errors.get(i, null);
-				Double lineNo = (Double) error.get("line", null);
+				if(error == null) continue;
+				Double lineNo = ((Double) error.get("line", null)) - 2;
 				Object reason = error.get("reason", null);
 				IMarker marker = file
 						.createMarker("org.eclipse.core.resources.problemmarker");
@@ -73,19 +82,20 @@ public class JSLint {
 			}
 			if (errors.getLength() == 0) {
 				MessageDialog.openInformation(null, "JSLint",
-						"HOORAY! No errors found. \n" + options);
+						"No errors found.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			scope = null;
 			context = null;
 		}
 	}
 
-	private void clearMarkers(IFile file) {
+	public void clearMarkers(IResource resource) {
 		IMarker[] markers = null;
 		try {
-			markers = file.findMarkers(
+			markers = resource.findMarkers(
 					"org.eclipse.core.resources.problemmarker", true,
 					IResource.DEPTH_INFINITE);
 		} catch (Exception e) {
@@ -93,7 +103,9 @@ public class JSLint {
 		}
 		for (IMarker marker : markers) {
 			try {
-				if (marker.getAttribute("org.pkg.jstools.marker").toString() == "true") {
+				if (marker.getAttribute("org.pkg.jstools.marker") != null
+						&& marker.getAttribute("org.pkg.jstools.marker")
+								.toString() == "true") {
 					marker.delete();
 				}
 			} catch (CoreException e) {
@@ -192,17 +204,34 @@ public class JSLint {
 				.getBoolean(PreferenceConstants.JSLINT_NEWCAP));
 		map.put(PreferenceConstants.JSLINT_IMMED, prefs
 				.getBoolean(PreferenceConstants.JSLINT_IMMED));
-
+		
+		cleanPrefs(map);
+		
 		if (prefs.getInt(PreferenceConstants.JSLINT_INDENT) > 0)
 			map.put(PreferenceConstants.JSLINT_INDENT, prefs
 					.getInt(PreferenceConstants.JSLINT_INDENT));
-		if (prefs.getInt(PreferenceConstants.JSLINT_LINELEN) > 0)
+		/*if (prefs.getInt(PreferenceConstants.JSLINT_LINELEN) > 0)
 			map.put(PreferenceConstants.JSLINT_LINELEN, prefs
-					.getInt(PreferenceConstants.JSLINT_LINELEN));
+					.getInt(PreferenceConstants.JSLINT_LINELEN));*/
 		if (prefs.getInt(PreferenceConstants.JSLINT_ERRS) > 0)
 			map.put(PreferenceConstants.JSLINT_ERRS, prefs
 					.getInt(PreferenceConstants.JSLINT_ERRS));
 
 		return map;
+	}
+
+	/**
+	 * @param map
+	 */
+	private void cleanPrefs(Map<String, Object> map) {
+		Set<String> keys = map.keySet();
+		Map<String, Object> nMap = new HashMap<String, Object>();
+		for(String key : keys) {
+			if(map.get(key).toString() != "false") {
+				nMap.put(key, true);
+			}
+		}
+		map.clear();
+		map.putAll(nMap);
 	}
 }

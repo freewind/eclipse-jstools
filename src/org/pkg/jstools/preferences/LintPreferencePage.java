@@ -100,8 +100,8 @@ public class LintPreferencePage extends FieldEditorPreferencePage implements
 				getFieldEditorParent()));
 		addField(new StringFieldEditor(PreferenceConstants.JSLINT_INDENT,
 				"Strict white space indentation", getFieldEditorParent()));
-		addField(new StringFieldEditor(PreferenceConstants.JSLINT_LINELEN,
-				"Maximum line length", getFieldEditorParent()));
+		/*addField(new StringFieldEditor(PreferenceConstants.JSLINT_LINELEN,
+				"Maximum line length", getFieldEditorParent()));*/
 		addField(new StringFieldEditor(PreferenceConstants.JSLINT_ERRS,
 				"Maximum number of errors", getFieldEditorParent()));
 	}
