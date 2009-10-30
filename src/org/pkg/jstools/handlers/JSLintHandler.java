@@ -12,9 +12,9 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.pkg.jstools.JSLint;
 
-
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
+ * 
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
@@ -50,14 +50,18 @@ public class JSLintHandler extends AbstractHandler {
 			return null;
 		}
 
-		if (activeEditor.isDirty()) {
-			MessageDialog.openWarning(window.getShell(), "JSTools", "The file "
-					+ activeEditor.getTitle() + " before running the tool.");
-		} else {
-			if(file != null) {
-				new JSLint().validate(file);
-			}
+		if (file == null) {
+			return null;
 		}
+
+		if (activeEditor.isDirty()) {
+			/*MessageDialog.openWarning(window.getShell(), "JSTools",
+					"The file " + activeEditor.getTitle()
+							+ " must be saved before running the tool.");*/
+			activeEditor.doSave(null);
+		}
+		new JSLint().validate(file);
+		
 		return null;
 	}
 }
