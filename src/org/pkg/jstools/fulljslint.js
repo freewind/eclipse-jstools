@@ -1071,7 +1071,7 @@ var JSLINT = (function () {
             if (at >= 0) {
                 warningAt("Unsafe character.", line, at);
             }
-            if (option.maxlen && (option.maxlen < s.length)) {
+            if (option.maxlen && option.maxlen < s.length) {
                 warningAt("Line too long.", line, s.length);
             }
             return true;
@@ -1861,7 +1861,7 @@ loop:   for (;;) {
                 } else if (v.value === 'false') {
                     obj[t.value] = false;
                 } else {
-                    error("Bad option value for : " + t.value + ', value : ' + v.value, v);
+                    error("Bad option value.", v);
                 }
                 t = lex.token();
             } else {

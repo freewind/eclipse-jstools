@@ -204,6 +204,8 @@ public class JSLint {
 				.getBoolean(PreferenceConstants.JSLINT_NEWCAP));
 		map.put(PreferenceConstants.JSLINT_IMMED, prefs
 				.getBoolean(PreferenceConstants.JSLINT_IMMED));
+		map.put(PreferenceConstants.JSLINT_FNSPACE, !prefs
+				.getBoolean(PreferenceConstants.JSLINT_FNSPACE));
 		
 		cleanPrefs(map);
 		

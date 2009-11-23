@@ -55,9 +55,6 @@ public class JSLintHandler extends AbstractHandler {
 		}
 
 		if (activeEditor.isDirty()) {
-			/*MessageDialog.openWarning(window.getShell(), "JSTools",
-					"The file " + activeEditor.getTitle()
-							+ " must be saved before running the tool.");*/
 			activeEditor.doSave(null);
 		}
 		new JSLint().validate(file);

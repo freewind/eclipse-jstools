@@ -40,15 +40,15 @@ function js_beautify(js_source_text, options)
     var prefix, token_type, do_block_just_closed, var_line, var_line_tainted, if_line_flag;
     var indent_level, wanted_newline, just_added_newline;
 
-
     options                   = options || {};
+    
     var opt_indent_size       = options.indent_size || 4;
     var opt_indent_char       = options.indent_char || ' ';
     var opt_preserve_newlines =
         typeof options.preserve_newlines === 'undefined' ? true : options.preserve_newlines;
     var opt_indent_level      = options.indent_level || 0; // starting indentation
     var opt_space_after_anon_function = options.space_after_anon_function === 'undefined' ? false : options.space_after_anon_function;
-
+    
     just_added_newline = false;
 
 
@@ -532,6 +532,10 @@ function js_beautify(js_source_text, options)
                 print_space();
             } else if (last_word === 'function') {
                 // function() vs function ()
+                if (opt_space_after_anon_function) {
+                    print_space();
+                }
+            } else if (last_word === 'catch') {
                 if (opt_space_after_anon_function) {
                     print_space();
                 }

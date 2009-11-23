@@ -43,12 +43,20 @@ public class JSBeautifier {
 		initContext();
 
 		String contents = "";
-		String options = "{}";
+		Scriptable options = null;
+		Map<String, Object> prefs = new HashMap<String, Object>();
 		try {
 			contents = getFileContents(file.getContents());
-			options = getPreferences().toString().replaceAll("=", ":");
-
+			prefs = getPreferences();
+			
+			options = context.newObject(scope);
+			
 			scope.put("contents", scope, contents);
+			
+			for(String key : prefs.keySet()) {
+				options.put(key, options, prefs.get(key));
+			}
+			
 			scope.put("opts", scope, options);
 			
 			context.evaluateString(scope, "result = js_beautify(contents, opts);",
@@ -112,10 +120,13 @@ public class JSBeautifier {
 
 		map.put(PreferenceConstants.JSB_PRESERVE_EMPTY, prefs
 				.getBoolean(PreferenceConstants.JSB_PRESERVE_EMPTY));
-		
+
 		map.put(PreferenceConstants.JSB_DETECT_PACKERS, prefs
 				.getBoolean(PreferenceConstants.JSB_DETECT_PACKERS));
-
+		
+		map.put(PreferenceConstants.JSB_IDENT_SPACE, prefs
+				.getBoolean(PreferenceConstants.JSB_IDENT_SPACE));
+		
 		return map;
 	}
 

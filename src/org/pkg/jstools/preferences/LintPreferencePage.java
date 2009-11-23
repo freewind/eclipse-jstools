@@ -3,7 +3,6 @@ package org.pkg.jstools.preferences;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.StringFieldEditor;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.pkg.jstools.JSToolsActivator;
@@ -23,16 +22,13 @@ import org.pkg.jstools.JSToolsActivator;
 public class LintPreferencePage extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage {
 
+	/**
+	 * The default constructor for the JSLint preference page.
+	 */
 	public LintPreferencePage() {
 		super(GRID);
 		setPreferenceStore(JSToolsActivator.getDefault().getPreferenceStore());
 		setDescription("See http://www.jslint.com/lint.html for details");
-		try{
-			ImageDescriptor desc = ImageDescriptor.createFromFile(LintPreferencePage.class, "/icons/lint.png");
-			setImageDescriptor(desc);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -95,9 +91,15 @@ public class LintPreferencePage extends FieldEditorPreferencePage implements
 				"Require \"use strict\"", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.JSLINT_NEWCAP,
 				"Require Initial Caps for constructors", getFieldEditorParent()));
+
 		addField(new BooleanFieldEditor(PreferenceConstants.JSLINT_IMMED,
 				"Require parens around immediate invocations",
 				getFieldEditorParent()));
+		
+		addField(new BooleanFieldEditor(PreferenceConstants.JSLINT_FNSPACE,
+				"Require a space after function, catch, etc.",
+				getFieldEditorParent()));
+		
 		addField(new StringFieldEditor(PreferenceConstants.JSLINT_INDENT,
 				"Strict white space indentation", getFieldEditorParent()));
 		/*addField(new StringFieldEditor(PreferenceConstants.JSLINT_LINELEN,

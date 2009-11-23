@@ -51,13 +51,9 @@ public class JSBeautifierHandler extends AbstractHandler {
 		}
 
 		if (activeEditor.isDirty()) {
-			MessageDialog.openWarning(window.getShell(), "JSTools", "The file "
-					+ activeEditor.getTitle() + " before running the tool.");
-		} else {
-			if(file != null) {
-				new JSBeautifier().beautify(file);
-			}
+			activeEditor.doSave(null);
 		}
+		new JSBeautifier().beautify(file);
 		return null;
 	}
 }

@@ -32,13 +32,15 @@ public class PreferenceConstants {
 	public static final String JSLINT_STRICT = "strict";
 	public static final String JSLINT_NEWCAP = "newcap";
 	public static final String JSLINT_IMMED = "immed";
+	public static final String JSLINT_FNSPACE = "fnspace";
 
 	public static final String JSLINT_INDENT = "indent";
 	public static final String JSLINT_LINELEN = "maxlen";
 	public static final String JSLINT_ERRS = "maxerr";
 
-	public static final String JSB_INDENT = "indent";
-	public static final String JSB_PRESERVE_EMPTY = "emptylines";
+	public static final String JSB_INDENT = "indent_size";
+	public static final String JSB_PRESERVE_EMPTY = "preserve_newlines";
 	public static final String JSB_DETECT_PACKERS = "packers";
+	public static final String JSB_IDENT_SPACE = "space_after_anon_function";
 
 }

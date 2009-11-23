@@ -20,20 +20,20 @@ import org.pkg.jstools.JSToolsActivator;
 public class BeautifierPreferencePage extends FieldEditorPreferencePage
 		implements IWorkbenchPreferencePage {
 
+	/**
+	 * Values for code indentation.
+	 */
 	private String[][] indentArray = { { "4 spaces", "4" },
 			{ "a tab character", "1" }, { "2 spaces", "2" },
 			{ "3 spaces", "3" }, { "8 spaces", "8" } };
 
+	/**
+	 * The default constructor for the beautifier preference page.
+	 */
 	public BeautifierPreferencePage() {
 		super(GRID);
 		setPreferenceStore(JSToolsActivator.getDefault().getPreferenceStore());
 		setDescription("See http://jsbeautifier.org/ for details.");
-		try{
-			ImageDescriptor desc = ImageDescriptor.createFromFile(LintPreferencePage.class, "/icons/beautify.png");
-			setImageDescriptor(desc);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -50,6 +50,11 @@ public class BeautifierPreferencePage extends FieldEditorPreferencePage
 
 		addField(new BooleanFieldEditor(PreferenceConstants.JSB_DETECT_PACKERS,
 				"Detect packers", getFieldEditorParent()));
+
+		addField(new BooleanFieldEditor(PreferenceConstants.JSB_IDENT_SPACE,
+				"Add space after identifiers (function, catch, etc.)",
+				getFieldEditorParent()));
+
 	}
 
 	/*
@@ -59,6 +64,7 @@ public class BeautifierPreferencePage extends FieldEditorPreferencePage
 	 * org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
 	 */
 	public void init(IWorkbench workbench) {
+		
 	}
 
 }
