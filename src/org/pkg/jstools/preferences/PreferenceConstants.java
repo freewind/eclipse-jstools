@@ -42,5 +42,6 @@ public class PreferenceConstants {
 	public static final String JSB_PRESERVE_EMPTY = "preserve_newlines";
 	public static final String JSB_DETECT_PACKERS = "packers";
 	public static final String JSB_IDENT_SPACE = "space_after_anon_function";
-
+	public static final String JSB_LINT_HAPPY = "jslint_happy";
+	public static final String JSB_BRACE_STYLE = "brace_style";
 }

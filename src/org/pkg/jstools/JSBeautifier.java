@@ -123,9 +123,15 @@ public class JSBeautifier {
 
 		map.put(PreferenceConstants.JSB_DETECT_PACKERS, prefs
 				.getBoolean(PreferenceConstants.JSB_DETECT_PACKERS));
-		
+
 		map.put(PreferenceConstants.JSB_IDENT_SPACE, prefs
 				.getBoolean(PreferenceConstants.JSB_IDENT_SPACE));
+		
+		map.put(PreferenceConstants.JSB_LINT_HAPPY, prefs
+				.getBoolean(PreferenceConstants.JSB_LINT_HAPPY));
+		
+		map.put(PreferenceConstants.JSB_BRACE_STYLE, prefs
+				.getString(PreferenceConstants.JSB_BRACE_STYLE));
 		
 		return map;
 	}

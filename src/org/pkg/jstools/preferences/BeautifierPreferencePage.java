@@ -1,9 +1,11 @@
 package org.pkg.jstools.preferences;
 
-import org.eclipse.jface.preference.*;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.eclipse.jface.preference.BooleanFieldEditor;
+import org.eclipse.jface.preference.ComboFieldEditor;
+import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.swt.widgets.Link;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.pkg.jstools.JSToolsActivator;
 
 /**
@@ -26,6 +28,15 @@ public class BeautifierPreferencePage extends FieldEditorPreferencePage
 	private String[][] indentArray = { { "4 spaces", "4" },
 			{ "a tab character", "1" }, { "2 spaces", "2" },
 			{ "3 spaces", "3" }, { "8 spaces", "8" } };
+
+	/**
+	 * Values for brace style.
+	 */
+	private String[][] braceArray = { 
+			{ "Braces with control statement", "collapse" },
+			{ "Braces on own line", "expand" },
+			{ "End braces on own line", "end-expand" }
+	};
 
 	/**
 	 * The default constructor for the beautifier preference page.
@@ -55,6 +66,15 @@ public class BeautifierPreferencePage extends FieldEditorPreferencePage
 				"Add space after identifiers (function, catch, etc.)",
 				getFieldEditorParent()));
 
+		addField(new BooleanFieldEditor(PreferenceConstants.JSB_LINT_HAPPY,
+				"Enable jslint strict mode",
+				getFieldEditorParent()));
+
+		addField(new ComboFieldEditor(PreferenceConstants.JSB_BRACE_STYLE,
+				"Brace Style", braceArray, getFieldEditorParent()));
+		/*Link lnk = new Link(getFieldEditorParent(), 0);
+		lnk.setText("See <a href=\"http://jsbeautifier.org/\">http://jsbeautifier.org/</a> for details.");*/
+		
 	}
 
 	/*
@@ -64,7 +84,7 @@ public class BeautifierPreferencePage extends FieldEditorPreferencePage
 	 * org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
 	 */
 	public void init(IWorkbench workbench) {
-		
+
 	}
 
 }

@@ -56,6 +56,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.JSB_INDENT, 4);
 		store.setDefault(PreferenceConstants.JSB_PRESERVE_EMPTY, true);
 		store.setDefault(PreferenceConstants.JSB_DETECT_PACKERS, true);
+		store.setDefault(PreferenceConstants.JSB_LINT_HAPPY, false);
+		store.setDefault(PreferenceConstants.JSB_BRACE_STYLE, "collapse");
 	}
 
 }
